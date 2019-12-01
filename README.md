@@ -47,4 +47,40 @@ create folder templates/ inside the app and create the html file
 
 Now final step is to link the url with the app.
 inside the urls.py the path needs to be imported and create a list of url patterns that correspond to each view function.
+
+
+To create a base template that can be used in all o the apps inside the project, create a templates folder inside the main_app and create a file called base.html
+
+Storing the data to be displayed on website:
+
+1) In order to store the data to be displayed in the website we need to create databases.
+
+2) Typically to create a database and manage it sql is used. but django doesn't require that it has ORM(object relational mapper)
+
+3) ORM is a program that allows you to create classes that correspond to the database tables. class attributes correspond to columns and instances of the class correspond to rows in the database. so instead of sql we can just write python classes.
+
+4) The classes created when using ORM is called models. They should be inside models.py in the django app.
+
+To create databases
+10 once the model has been declared in a class. we need to create a migration. A migration is a file containing a Migration class with rules that tell Django what changes need to be made to the database. To create the mygration use command python manage.py makemigrations "appname"
+
+once migration has been done we need to create the database using the migrate command.python manage.py migrate "appname"
+
+To create instances of a class in the model.py in app. we should use django shell. which is similar to python shell but allows you to access the database and create entries. use command python manage.py shell
+
+create instance like 
+>>> from projects.models import Project
+>>> p1 = Project(
+... title='My First Project',
+... description='A web development project.',
+... technology='Django',
+... image='img/project1.png'
+... )
+>>> p1.save()
+This creates a new entry in the app table and saves
+it to the database. 
+
+After creating the projects we need to create view functions to send the data from the database to the HTML templates. 
+
+once the views and urls get created, create the templates
  -->
